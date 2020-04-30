@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{45D5ACFD-8E61-449C-B644-6F080A4EF6D7}"
+ProjectSection(SolutionItems) = preProject
+	samples\apm-server.yml = samples\apm-server.yml
+	samples\docker-compose.yml = samples\docker-compose.yml
+	samples\kibana.yml = samples\kibana.yml
+	samples\README.md = samples\README.md
+EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elastic.Apm.RabbitMQ.Samples.WebApi", "samples\Elastic.Apm.RabbitMQ.Samples.WebApi\Elastic.Apm.RabbitMQ.Samples.WebApi.csproj", "{45028F27-AA41-419E-AAEC-D3C26A89CBF9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{8B2A85BE-E575-4D97-B103-6FC9C54C0C79}"
+ProjectSection(SolutionItems) = preProject
+	.gitignore = .gitignore
+	LICENSE = LICENSE
+	README.md = README.md
+EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{45028F27-AA41-419E-AAEC-D3C26A89CBF9} = {45D5ACFD-8E61-449C-B644-6F080A4EF6D7}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{45028F27-AA41-419E-AAEC-D3C26A89CBF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45028F27-AA41-419E-AAEC-D3C26A89CBF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45028F27-AA41-419E-AAEC-D3C26A89CBF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45028F27-AA41-419E-AAEC-D3C26A89CBF9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
