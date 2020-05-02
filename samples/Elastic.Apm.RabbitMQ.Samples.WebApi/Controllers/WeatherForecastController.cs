@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using EasyNetQ;
 using Microsoft.AspNetCore.Mvc;
@@ -19,17 +18,23 @@ namespace Elastic.Apm.RabbitMQ.Samples.WebApi.Controllers
 
         private readonly ILogger<WeatherForecastController> _logger;
         private readonly IBus _bus;
+        private readonly HttpClient _httpClient;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger, IBus bus)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, IBus bus,
+            IHttpClientFactory httpClientFactory)
         {
             _logger = logger;
             _bus = bus;
+            _httpClient = httpClientFactory.CreateClient();
         }
 
         [HttpGet]
         public async Task<IActionResult> Get()
         {
             var rng = new Random();
+
+            await _httpClient.GetAsync("https://google.com");
+
             await _bus.PublishAsync(new Event
             {
                 Forecast = new WeatherForecast
