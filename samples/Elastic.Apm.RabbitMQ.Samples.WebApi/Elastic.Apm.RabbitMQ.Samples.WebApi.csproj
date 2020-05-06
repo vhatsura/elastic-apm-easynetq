@@ -9,5 +9,9 @@
       <PackageReference Include="Elastic.Apm.AspNetCore" Version="1.4.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\..\src\Elastic.Apm.EasyNetQ\Elastic.Apm.EasyNetQ.csproj" />
+    </ItemGroup>
+
 
 </Project>

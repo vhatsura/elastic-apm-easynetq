@@ -1,6 +1,8 @@
+using EasyNetQ.Interception;
 using Elastic.Apm.AspNetCore;
 using Elastic.Apm.AspNetCore.DiagnosticListener;
 using Elastic.Apm.DiagnosticSource;
+using Elastic.Apm.EasyNetQ;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -22,9 +24,16 @@ namespace Elastic.Apm.RabbitMQ.Samples.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddSingleton<EventConsumer>();
+            services.AddHttpClient();
+            
+            services.AddHttpClient<EventConsumer>();
+            //services.AddSingleton<EventConsumer>();
 
-            services.RegisterEasyNetQ(Configuration.GetValue<string>("RabbitMQ"));
+            Agent.Setup(new AgentComponents());
+
+            services.RegisterEasyNetQ(Configuration.GetValue<string>("RabbitMQ"),
+                register => register.EnableElasticApmTracing()
+                    .EnableInterception(i => i.EnableElasticApmInterceptor()));
 
             services.AddHostedService<ConsumeHostedService>();
         }
