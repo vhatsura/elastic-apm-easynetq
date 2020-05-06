@@ -13,8 +13,6 @@ namespace Elastic.Apm.EasyNetQ
 {
     public class ElasticApmAdvancedBus : RabbitAdvancedBus
     {
-        private readonly ILogProvider _logProvider;
-
         public ElasticApmAdvancedBus(IConnectionFactory connectionFactory, IConsumerFactory consumerFactory,
             IClientCommandDispatcherFactory clientCommandDispatcherFactory,
             IPublishConfirmationListener confirmationListener, IEventBus eventBus,
@@ -27,7 +25,6 @@ namespace Elastic.Apm.EasyNetQ
                 handlerCollectionFactory, container, connectionConfiguration, produceConsumeInterceptor,
                 messageSerializationStrategy, conventions, advancedBusEventHandlers, persistentConnectionFactory)
         {
-            _logProvider = logProvider;
         }
 
         public override IDisposable Consume(IQueue queue,
@@ -36,11 +33,6 @@ namespace Elastic.Apm.EasyNetQ
         {
             async Task NewOnMessage(byte[] body, MessageProperties properties, MessageReceivedInfo receivedInfo)
             {
-                // MDC (mapped diagnostic context) definition: https://www.baeldung.com/mdc-in-log4j-2-logback
-                // NDC (nested diagnostic context) definition: https://www.baeldung.com/java-logging-ndc-log4j
-                // using var disposable = _logProvider.OpenMappedContext("CorrelationId",
-                //     properties.CorrelationIdPresent ? properties.CorrelationId : Guid.NewGuid().ToString());
-
                 if (!Agent.IsConfigured)
                 {
                     await onMessage(body, properties, receivedInfo).ConfigureAwait(false);

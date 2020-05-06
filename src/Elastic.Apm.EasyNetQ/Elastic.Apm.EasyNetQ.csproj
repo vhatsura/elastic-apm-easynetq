@@ -2,6 +2,22 @@
 
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0</TargetFrameworks>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <Authors>Vadim Hatsura</Authors>
+        <PackageId>ElasticApm.EasyNetQ</PackageId>
+        <Description>Elastic APM for EasyNetQ. This package contains auto instrumentation for EasyNetQ.</Description>
+        <PackageTags>apm, monitoring, elastic, elasticapm, analytics, rabbitmq, easynetq</PackageTags>
+        <Copyright>Copyright (c) 2020 - Present</Copyright>
+        <PackageProjectUrl>https://github.com/vhatsura/elastic-apm-rabbitmq</PackageProjectUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <RepositoryUrl>https://github.com/vhatsura/elastic-apm-rabbitmq.git</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <Company />
+        <Product />
+        <LangVersion>8</LangVersion>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <LangVersion>8</LangVersion>
     </PropertyGroup>
 
